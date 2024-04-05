@@ -8,3 +8,11 @@ stages:
     - download.year
     outs:
     - data/climate_data
+  prepare:
+    cmd: python src/prepare.py
+    deps:
+    - data/climate_data
+    - src/prepare.py
+    outs:
+    - data/List_of_Fields.npy
+    - data/ground_truth.csv

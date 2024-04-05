@@ -17,3 +17,26 @@ stages:
       md5: 4fa4ae53665aaa01366b5c199d40b44d.dir
       size: 23755624
       nfiles: 3
+  prepare:
+    cmd: python src/prepare.py
+    deps:
+    - path: data/climate_data
+      hash: md5
+      md5: 4fa4ae53665aaa01366b5c199d40b44d.dir
+      size: 23755624
+      nfiles: 3
+    - path: src/prepare.py
+      hash: md5
+      md5: c79ee025938a7665e2de1001511b44a6
+      size: 2251
+    outs:
+    - path: data/List_of_Fields.npy
+      hash: md5
+      md5: b49bf4a95c42e089cd2a280015f6f41d
+      size: 368
+      isexec: true
+    - path: data/ground_truth.csv
+      hash: md5
+      md5: 3184f10938b5b0e32152fe6c9b59b7ca
+      size: 964
+      isexec: true

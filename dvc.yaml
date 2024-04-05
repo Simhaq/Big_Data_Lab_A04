@@ -16,3 +16,11 @@ stages:
     outs:
     - data/List_of_Fields.npy
     - data/ground_truth.csv
+  process:
+    cmd: python src/process.py
+    deps:
+    - data/List_of_Fields.npy
+    - data/climate_data
+    - src/process.py
+    outs:
+    - data/computed_monthly_averages.csv

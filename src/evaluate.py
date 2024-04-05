@@ -4,6 +4,8 @@ import os
 import numpy as np
 import pandas as pd
 
+import json
+
 from sklearn.metrics import r2_score
 
 month_df = pd.read_csv('data/ground_truth.csv')                # Reading the ground_truth.csv
@@ -18,7 +20,10 @@ computed_averages = computed_averages.flatten('F')             # Flattening the 
 
 R_squared = r2_score(extracted_averages, computed_averages)    # Computing R-squared score using sklearn's r2_score
 
-
+metrics = {'R_squared': R_squared}                             # Writing the obtained scores in a json file
+with open('scores.json','w') as f:
+    json.dump(metrics,f)
+    
 print("The R-squared score is ",R_squared)
 
 if R_squared >= 0.9:

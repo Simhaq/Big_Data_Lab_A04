@@ -75,5 +75,11 @@ stages:
       size: 964
     - path: src/evaluate.py
       hash: md5
-      md5: 47a0494cf2ce5a2e97c6625ec9194034
-      size: 1188
+      md5: b9bde7f2dd4a1f5ab0378cf83d431f49
+      size: 1373
+    outs:
+    - path: scores.json
+      hash: md5
+      md5: 2ba01530d0442a184b3256a61d237ba7
+      size: 33
+      isexec: true

@@ -30,3 +30,6 @@ stages:
     - data/computed_monthly_averages.csv
     - data/ground_truth.csv
     - src/evaluate.py
+    metrics:
+    - scores.json:
+        cache: false

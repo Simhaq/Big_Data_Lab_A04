@@ -24,3 +24,9 @@ stages:
     - src/process.py
     outs:
     - data/computed_monthly_averages.csv
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - data/computed_monthly_averages.csv
+    - data/ground_truth.csv
+    - src/evaluate.py

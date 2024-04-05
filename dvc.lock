@@ -62,3 +62,18 @@ stages:
       md5: a573c2bf4604cfde44391dc29c148912
       size: 1713
       isexec: true
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - path: data/computed_monthly_averages.csv
+      hash: md5
+      md5: a573c2bf4604cfde44391dc29c148912
+      size: 1713
+    - path: data/ground_truth.csv
+      hash: md5
+      md5: 3184f10938b5b0e32152fe6c9b59b7ca
+      size: 964
+    - path: src/evaluate.py
+      hash: md5
+      md5: 47a0494cf2ce5a2e97c6625ec9194034
+      size: 1188

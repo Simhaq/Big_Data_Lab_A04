@@ -1,0 +1,19 @@
+schema: '2.0'
+stages:
+  download:
+    cmd: python src/download.py
+    deps:
+    - path: src/download.py
+      hash: md5
+      md5: 52c056a9685496a3f7c11036800fac0b
+      size: 1984
+    params:
+      params.yaml:
+        download.n_locs: 3
+        download.year: '2012'
+    outs:
+    - path: data/climate_data
+      hash: md5
+      md5: 4fa4ae53665aaa01366b5c199d40b44d.dir
+      size: 23755624
+      nfiles: 3

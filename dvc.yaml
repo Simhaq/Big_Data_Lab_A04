@@ -1,0 +1,10 @@
+stages:
+  download:
+    cmd: python src/download.py
+    deps:
+    - src/download.py
+    params:
+    - download.n_locs
+    - download.year
+    outs:
+    - data/climate_data

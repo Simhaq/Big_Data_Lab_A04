@@ -9,22 +9,22 @@ stages:
       size: 1984
     params:
       params.yaml:
-        download.n_locs: 3
+        download.n_locs: 4
         download.year: '2012'
     outs:
     - path: data/climate_data
       hash: md5
-      md5: 4fa4ae53665aaa01366b5c199d40b44d.dir
-      size: 23755624
-      nfiles: 3
+      md5: d7df92e24bde79573ed0756a00e549f5.dir
+      size: 31495010
+      nfiles: 4
   prepare:
     cmd: python src/prepare.py
     deps:
     - path: data/climate_data
       hash: md5
-      md5: 4fa4ae53665aaa01366b5c199d40b44d.dir
-      size: 23755624
-      nfiles: 3
+      md5: d7df92e24bde79573ed0756a00e549f5.dir
+      size: 31495010
+      nfiles: 4
     - path: src/prepare.py
       hash: md5
       md5: c79ee025938a7665e2de1001511b44a6
@@ -32,26 +32,26 @@ stages:
     outs:
     - path: data/List_of_Fields.npy
       hash: md5
-      md5: b49bf4a95c42e089cd2a280015f6f41d
-      size: 368
+      md5: a9c4a9e4fb9fca5c91fafb2ab0c8e857
+      size: 488
       isexec: true
     - path: data/ground_truth.csv
       hash: md5
-      md5: 3184f10938b5b0e32152fe6c9b59b7ca
-      size: 964
+      md5: db939ef16474479d3fe981dc2ffe68e2
+      size: 1470
       isexec: true
   process:
     cmd: python src/process.py
     deps:
     - path: data/List_of_Fields.npy
       hash: md5
-      md5: b49bf4a95c42e089cd2a280015f6f41d
-      size: 368
+      md5: a9c4a9e4fb9fca5c91fafb2ab0c8e857
+      size: 488
     - path: data/climate_data
       hash: md5
-      md5: 4fa4ae53665aaa01366b5c199d40b44d.dir
-      size: 23755624
-      nfiles: 3
+      md5: d7df92e24bde79573ed0756a00e549f5.dir
+      size: 31495010
+      nfiles: 4
     - path: src/process.py
       hash: md5
       md5: e5325e415080c6b4600489933a69e44e
@@ -59,20 +59,20 @@ stages:
     outs:
     - path: data/computed_monthly_averages.csv
       hash: md5
-      md5: a573c2bf4604cfde44391dc29c148912
-      size: 1713
+      md5: 73396ce208acb05db95927e9ac172fd9
+      size: 3279
       isexec: true
   evaluate:
     cmd: python src/evaluate.py
     deps:
     - path: data/computed_monthly_averages.csv
       hash: md5
-      md5: a573c2bf4604cfde44391dc29c148912
-      size: 1713
+      md5: 73396ce208acb05db95927e9ac172fd9
+      size: 3279
     - path: data/ground_truth.csv
       hash: md5
-      md5: 3184f10938b5b0e32152fe6c9b59b7ca
-      size: 964
+      md5: db939ef16474479d3fe981dc2ffe68e2
+      size: 1470
     - path: src/evaluate.py
       hash: md5
       md5: b9bde7f2dd4a1f5ab0378cf83d431f49
@@ -80,6 +80,6 @@ stages:
     outs:
     - path: scores.json
       hash: md5
-      md5: 2ba01530d0442a184b3256a61d237ba7
+      md5: a8fe2cd0cd62019d19cb7fa94dc3dbf9
       size: 33
       isexec: true

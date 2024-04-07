@@ -9,12 +9,21 @@ import json
 from sklearn.metrics import r2_score
 
 month_df = pd.read_csv('data/ground_truth.csv')                # Reading the ground_truth.csv
-extracted_averages = month_df.iloc[:,2:].to_numpy()            # Getting the extracted monthly averages in the form of                                                                        2D numpy array
+daily_df = pd.read_csv('data/computed_monthly_averages.csv')   # Reading the computed_monthly_averages.csv
+
+n_fields = len(month_df.axes[1])                               # Getting total no of columns in month_df
+total_df = pd.concat([month_df,daily_df.iloc[:,2:]],axis = 1)  # Contatenating monthly and daily data to handle missing values in 
+total_df = total_df.dropna()                                   # daily data 
+
+
+extracted_averages = total_df.iloc[:,2:n_fields].to_numpy()    # Getting the extracted monthly averages in the form of
+                                                               # 2D numpy array
 extracted_averages = extracted_averages.flatten('F')           # Flattening the array along the column 
 
 
-daily_df = pd.read_csv('data/computed_monthly_averages.csv')   # Reading the computed_monthly_averages.csv
-computed_averages = daily_df.iloc[:,2:].to_numpy()             # Getting the computed monthly averages in the form of                                                                         2D numpy array 
+
+computed_averages = total_df.iloc[:,n_fields:].to_numpy()      # Getting the computed monthly averages in the form of
+                                                               # 2D numpy array 
 computed_averages = computed_averages.flatten('F')             # Flattening the array along the column
 
 
